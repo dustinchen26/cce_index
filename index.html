@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<!-- 
+  Copyright © [2023] [Dustin_Chen]. All rights reserved.
+  Author: Dustin Chen
+  Email:  Dustin_Chen@compal.com
+-->
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>cce_index_calculator</title>
+<style>
+/* 輸入框的樣式 */
+input[type=text] {
+    width: 60px; /* 控制輸入框的寬度 */
+    padding: 0px; /* 控制輸入框內容的填充 */
+    margin: 0px; /* 控制輸入框的邊距 */
+}
+</style>
+</head>
+<body>
+<header>
+    <h2>cce_index_calculator</h1>
+</header>
+  <style>
+    .author-info {
+      display: inline;
+      margin-right: 10px;
+    }
+	
+    body {
+      font-family: Roboto, sans-serif;  /* font-family: Arial, sans-serif;*/
+      font-size: 14px;
+      /* 設置較小的字體大小 */
+    }	
+	
+  </style>
+  <p class="author-info">Author: Dustin_Chen</p>
+  <p class="author-info">Email: <a href="mailto:Dustin_Chen@compal.com">Dustin_Chen@compal.com</a></p>
+  <p class="author-info">or <a href="mailto:chuhpsdustin@gmail.com">chuhpsdustin@gmail.com</a></p>
+  <br><br>
+  <li><strong>Refer Spec 38.213 chap 10.1</strong>
+      <ul>
+
+	  </ul>
+  </li>  
+<form id="inputForm">
+    <label for="ue_rnti">RNTI:</label>
+    <input type="text" id="ue_rnti" value="17020"><br>
+    <label for="csId">CS ID(0:CSS, 1:UESS):</label>
+    <input type="text" id="csId" value="1"><br>
+    <label for="cnt_slot">Slot index:</label>
+    <input type="text" id="cnt_slot" value="7"><br>
+    <label for="candidate_num">Number of Candidate for AL:</label>
+    <input type="text" id="candidate_num" value="4"><br>
+    <label for="AL">Aggregation Level:</label>
+    <input type="text" id="AL" value="2"><br>
+    <label for="freqDomainRes">CORESET-freq-dom Resolution:</label>
+    <input type="text" id="freqDomainRes" value="45"><br>
+    <label for="pdcchDuration">CORESET Time Duration:</label>
+    <input type="text" id="pdcchDuration" value="1"><br>
+    <button type="button" onclick="main()">Calculate</button>
+</form>
+
+<div id="output"></div>
+
+<script>
+function create_Y_tbl(ue_rnti, csId) {
+    let y = [];  
+    let tmp_Y = ue_rnti;  
+    
+    let Ap;
+    if (csId % 3 === 0) {
+        Ap = 39827;  
+    } else if (csId % 3 === 1) {
+        Ap = 39829;  
+    } else {
+        Ap = 39839;  
+    }
+    console.log("Ap", Ap);
+    
+    for (let i = 0; i < 20; i++) {
+        tmp_Y = (Ap * tmp_Y) % 65537;  
+        y.push(tmp_Y);  
+        console.log("y[" + i + "]=" + tmp_Y);  
+    }
+    
+    return y;  
+}
+
+function main() {
+    const ue_rnti = parseInt(document.getElementById("ue_rnti").value);  
+    const csId = parseInt(document.getElementById("csId").value);  
+    const cnt_slot = parseInt(document.getElementById("cnt_slot").value);  
+    const candidate_num = parseInt(document.getElementById("candidate_num").value);  
+    const AL = parseInt(document.getElementById("AL").value);  
+    const freqDomainRes = parseInt(document.getElementById("freqDomainRes").value);  
+    const pdcchDuration = parseInt(document.getElementById("pdcchDuration").value);  
+
+    const y = create_Y_tbl(ue_rnti, csId);  
+    
+    let output = "";
+    for (let candidate_idx = 0; candidate_idx < candidate_num; candidate_idx++) {
+        const cce_idx = ((y[cnt_slot] + Math.floor(candidate_idx * (pdcchDuration * freqDomainRes) / (AL * candidate_num))) % (Math.floor(pdcchDuration * freqDomainRes / AL))) * AL;
+        console.log("CCE idx=", [cce_idx, cce_idx + AL - 1]);  
+        output += "CCE idx=" + cce_idx + " to " + (cce_idx + AL - 1) + "<br>";  
+    }
+
+    document.getElementById("output").innerHTML = output;
+}
+
+</script>
+</body>
+</html>
