@@ -54,23 +54,15 @@
     <li><strong>Input parameters</strong>
         <ul>
             <form id="inputForm">
-                <label for="ue_rnti">RNTI:</label>
-                <input type="text" id="ue_rnti" value="17020"><br>
-                <label for="csId">CS ID(0:CSS, 1:UESS):</label>
-                <input type="text" id="csId" value="1"><br>
-                <label for="cnt_slot">Slot index:</label>
-                <input type="text" id="cnt_slot" value="7"><br>
-                <label for="AL">Aggregation Level:</label>
-                <input type="text" id="AL" value="2"><br>
-                <label for="candidate_num">Number of Candidate for AL:</label>
-                <input type="text" id="candidate_num" value="4"><br>
-                <label for="freqDomainRes">CORESET-freq-dom Resolution:</label>
-                <input type="text" id="freqDomainRes" value="45"><br>
-                <label for="pdcchDuration">CORESET Time Duration:</label>
-                <input type="text" id="pdcchDuration" value="1"><br>
+			    <label for="cnt_slot">【1】Slot index:</label>                <input type="text" id="cnt_slot" value="7"><br>
+                <label for="ue_rnti">【2】RNTI:</label>                <input type="text" id="ue_rnti" value="17020"><br>
+                <label for="csId">【3】CS ID(0:CSS, 1:UESS):</label>                <input type="text" id="csId" value="1"><br>
+                <label for="AL">【4】Aggregation Level:</label>                <input type="text" id="AL" value="2"><br>
+                <label for="candidate_num">【5】Number of Candidate for AL:</label>                <input type="text" id="candidate_num" value="4"><br>
+                <label for="pdcchDuration">【6】CORESET Time Duration:</label>                <input type="text" id="pdcchDuration" value="1"><br>
+                <label for="freqDomainRes">【7】CORESET-freq-dom Resolution:</label>                <input type="text" id="freqDomainRes" value="45"><br>
                 <button type="button" onclick="main()">Calculate</button>
             </form>
-
             <div id="output"></div>
         </ul>
     </li>
@@ -115,8 +107,8 @@
             for (let candidate_idx = 0; candidate_idx < candidate_num; candidate_idx++) {
                 const cce_idx = ((y[cnt_slot] + Math.floor(candidate_idx * (pdcchDuration * freqDomainRes) / (AL *
                     candidate_num))) % (Math.floor(pdcchDuration * freqDomainRes / AL))) * AL;
-                console.log("CCE idx=", [cce_idx, cce_idx + AL - 1]);
-                output += "CCE idx = " + cce_idx + " to " + (cce_idx + AL - 1) + "<br>";
+                console.log("CCE Index=", [cce_idx, cce_idx + AL - 1]);
+                output += "CCE Index = " + cce_idx + " to " + (cce_idx + AL - 1) + "<br>";
             }
 
             document.getElementById("output").innerHTML = output;

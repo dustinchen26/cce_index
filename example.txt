@@ -1,0 +1,108 @@
+// qa02-2024-05-22-151503-CPE11_white●
+No.	Time	Source	Destination	Protocol	Info	GNB-DU-UE-F1AP-ID	RAN-UE-NGAP-ID	C-RNTI	c-RNTI	gTP-TEID	gTP-TEID	PDU address information	Sfn	Sf	Slot Index	RNTI	UL_CQI for 1st layer	UL_CQI for 2nd layer	Sfn	Sf	Slot index	RNTI	HARQ Process Index	Frequency Domain Assignment	RNTI	TB CRC Flag
+106138	1970-01-10 06:52:50.101556	10.88.120.11	10.88.120.22	NR_INFO	[DCI_UL.req]														978	3	1	17017,17025,17020	14,10,5	13923,13975,34020		
+
+NR INFO
+    L1PA Message: DCI_UL.req
+        Message Type: DCI_UL.req
+        Length of Vendor-specific message body: 0
+        Length of message body: 336
+        SFN: 978
+        SF: 3                //【1】Slot index
+        CCI: 0
+        Number of Numerologies: 1
+        Numerology: 1
+            Slot index: 1    //【1】Slot index=7
+            CIF: 0
+            Reserved 1 byte
+            Length: 332
+            Number of DCIs: 3
+            Reserved 1 byte
+            DCI UL PDU #2:
+                PDU Type: 0(DCI UL PDU)
+                Reserved 1 byte
+                PDU Size: 108
+                DCI Format: Format 0_1
+                Reserved 1 byte
+                RNTI: 17020   //【2】RNTI
+                Number of zero padding bits: 0
+                Reserved 2 bytes
+                Search Space Info:
+                    Search Space type: 1 (UE-Specific search space ) //【3】CS ID(0:CSS, 1:UESS)
+                    CCE Index: 20  //【Ans】CCE Index
+                    Aggregation Level: 2  //【4】Aggregation Level
+                    Number of Candidate for AL = 1: 0
+                    Number of Candidate for AL = 2: 4  //【5】Number of Candidate for AL
+                    Number of Candidate for AL = 4: 2
+                    Number of Candidate for AL = 8: 0
+                    Number of Candidate for AL = 16: 0
+                    Monitoring Symbols PDCCH within Slot: 8192
+                    Reserved 2 bytes
+                CORESET Info:
+                    BWP-numerology: 1 (30kHz)
+                    BWP-cp-type: 0 (normal CP)
+                    BWP-start-RB: 0
+                    BWP-size-RB: 273
+                    CORESET ID within the BWP: 1
+                    CORESET Time Duration: 1            //【6】CORESET Time Duration
+                    CORESET-freq-dom[0]: 65535 (Invalid)  // 【7】CORESET-freq-dom Resolution
+                    CORESET-freq-dom[1]: 65535 (Invalid)  // 【7】CORESET-freq-dom Resolution
+                    CORESET-freq-dom[2]: 65528 ()         // 【7】CORESET-freq-dom Resolution
+                    CORESET CCE to REG Mapping Type: 0 (Non-interleaved)
+                    CORESET REG Bundle Size: 6
+                    CORESET Interleaver Size: 2
+                    Reserved 1 byte
+                    CORESET Shift Index: 19
+                    n_ID: 19
+                    n_RNTI: 0
+                    CORESET Type: 0 (the CORESET is not configured by the PBCH or by the controlResourceSetZero field in the PDCCH-ConfigCommon IE )
+                    TCI Present in DCI: 0
+                    CORESET precoder granularity: 0 (CORESET-REG-bundle-size)
+                    SSB attenuation: 0.0dB(0)
+                    DMRS EPRE ratio to SSB: 0.0dB(8)
+                    PDCCH EPRE ratio to SSB: 0.0dB(8)
+                    Number of Precoding Vectors: 0
+                    Reserved 2 bytes
+                RNTI Type: 9 (C-RNTI)
+                Number of Frequency domain resource assignment bits: 16
+                Reserved 2 bytes
+                Frequency Domain Resource Assignment: 34020
+                Number of Time domain resource assignment bits: 3
+                Time Domain Resource Assignment: 7
+                Number of Frequency Hopping flag bits: 0
+                Frequency Hopping Flag: 0
+                MCS: 9
+                New Data Indicator: 0
+                Redundancy Version: 0
+                HARQ Processing Index: 5
+                TPC Command for Scheduled PUSCH: 1
+                Number of UL/SUL indicator bits: 0
+                UL/SUL Indicator: 0
+                Number of Carrier indicator bits: 0
+                Carrier Indicator: 0
+                Number of Bandwidth part indicator bits: 0
+                Bandwidth Part Indicator: 0
+                Number of 1st DL assignment index bits: 2
+                1st DL assignment index : 3
+                Number of 2nd DL assignment index bits: 0
+                2nd DL assignment index : 0
+                Number of SRS resource indicator bits: 0
+                SRS Resource Indicator: 0
+                Number of Precoding information and number of layer bits: 2
+                Precoding Information and Number of Layer: 2
+                Number of Antenna ports bits: 3
+                Antenna Port value: 1
+                Number of SRS request bits: 2
+                SRS Request: 0
+                Number of CSI request bits: 0
+                CSI Request: 0
+                Number of CBG transmission information bits: 0
+                CBG Transmission Information: 0
+                Number of PTRS-DMRS association bits: 0
+                PTRS-DMRS Association: 0
+                Number of beta_offset indicator bits: 0
+                Beta Offset Indicator: 0
+                Number of DMRS sequence initialization bits: 1
+                DMRS Sequence Initialization: 0
+                UL-SCH indicator: 1
+                Reserved 2 bytes
