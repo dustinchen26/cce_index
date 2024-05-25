@@ -14,22 +14,11 @@
     <style>
         /* 輸入框的樣式 */
         input[type=text] {
-            width: 60px;
-            /* 控制輸入框的寬度 */
-            padding: 0px;
-            /* 控制輸入框內容的填充 */
-            margin: 0px;
-            /* 控制輸入框的邊距 */
+            width: 60px;            /* 控制輸入框的寬度 */
+            padding: 0px;            /* 控制輸入框內容的填充 */
+            margin: 0px;            /* 控制輸入框的邊距 */
         }
 
-    </style>
-</head>
-
-<body>
-    <header>
-        <h2>cce_index_calculator</h1>
-    </header>
-    <style>
         .author-info {
             display: inline;
             margin-right: 10px;
@@ -38,30 +27,53 @@
         body {
             font-family: Roboto, sans-serif;
             /* font-family: Arial, sans-serif;*/
-            font-size: 14px;
-            /* 設置較小的字體大小 */
+            font-size: 14px;            /* 設置較小的字體大小 */
+        }
+
+        /* 移除 <li> 和 <ul> 元素之間的間距 */
+        li,
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            padding-left: 20px;
+            list-style-type: none;
         }
     </style>
+</head>
+
+<body>
+    <header>
+        <h2>cce_index_calculator</h2> 
+    </header>
+
     <p class="author-info">Author: Dustin_Chen</p>
     <p class="author-info">Email: <a href="mailto:Dustin_Chen@compal.com">Dustin_Chen@compal.com</a></p>
     <p class="author-info">or <a href="mailto:chuhpsdustin@gmail.com">chuhpsdustin@gmail.com</a></p>
     <br><br>
     <li><strong>Refer Spec 38.213 chap 10.1 & check bbuiolog [DCI_UL.req] to calculate CCE Index</strong>
         <ul>
-            <img src="https://raw.githubusercontent.com/dustinchen26/cce_index/master/example3.png" alt="GitHub Image"
-                width="750">				
+            <li> <!-- 添加列表項 -->
+                <img src="https://raw.githubusercontent.com/dustinchen26/cce_index/master/example4.png" alt="GitHub Image"
+                    width="720">
+            </li>
         </ul>
     </li>
     <li><strong>Input parameters</strong>
         <ul>
             <form id="inputForm">
-			    <label for="cnt_slot">【1】Slot index:</label>                <input type="text" id="cnt_slot" value="7"><br>
-                <label for="ue_rnti">【2】RNTI:</label>                <input type="text" id="ue_rnti" value="17020"><br>
-                <label for="csId">【3】CS ID(0:CSS, 1:UESS):</label>                <input type="text" id="csId" value="1"><br>
-                <label for="AL">【4】Aggregation Level:</label>                <input type="text" id="AL" value="2"><br>
-                <label for="candidate_num">【5】Number of Candidate for AL:</label>                <input type="text" id="candidate_num" value="4"><br>
-                <label for="pdcchDuration">【6】CORESET Time Duration:</label>                <input type="text" id="pdcchDuration" value="1"><br>
-                <label for="freqDomainRes">【7】CORESET-freq-dom Resolution:</label>                <input type="text" id="freqDomainRes" value="45"><br>
+                <label for="cnt_slot">【1】Slot index:</label> <input type="text" id="cnt_slot" value="7"><br>
+                <label for="ue_rnti">【2】RNTI:</label> <input type="text" id="ue_rnti" value="17020"><br>
+                <label for="csId">【3】CS ID(0:CSS, 1:UESS):</label> <input type="text" id="csId" value="1"><br>
+                <label for="AL">【4】Aggregation Level:</label> <input type="text" id="AL" value="2"><br>
+                <label for="candidate_num">【5】Number of Candidate for AL:</label> <input type="text" id="candidate_num"
+                    value="4"><br>
+                <label for="pdcchDuration">【6】CORESET Time Duration:</label> <input type="text" id="pdcchDuration"
+                    value="1"><br>
+                <label for="freqDomainRes">【7】CORESET-freq-dom Resolution:</label> <input type="text" id="freqDomainRes"
+                    value="45"><br>
                 <button type="button" onclick="main()">Calculate</button>
             </form>
             <div id="output"></div>
